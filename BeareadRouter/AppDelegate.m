@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "URLRoute.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +18,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    URLRoute *route = [URLRoute routeWithURLString:@"bearead://bookdetail?test=123&bid=123"];
+    if (route.routeError) {
+        NSLog(@"%@",route.routeError);
+    } else {
+        NSLog(@"%@",route);
+    }
     return YES;
 }
 

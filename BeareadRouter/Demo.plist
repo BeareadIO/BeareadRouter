@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>书籍详情页</key>
+	<dict>
+		<key>映射</key>
+		<dict>
+			<key>fid</key>
+			<string>bid</string>
+			<key>test</key>
+			<string>test</string>
+			<key>show</key>
+			<string>show</string>
+		</dict>
+		<key>例子</key>
+		<dict>
+			<key>打开书籍详情并且loading</key>
+			<string>bearead://bookdetail</string>
+		</dict>
+		<key>域名</key>
+		<string>bookdetail</string>
+		<key>参数</key>
+		<dict>
+			<key>书籍ID</key>
+			<dict>
+				<key>name</key>
+				<string>fid</string>
+				<key>option</key>
+				<false/>
+			</dict>
+			<key>显示动画</key>
+			<dict>
+				<key>name</key>
+				<string>show</string>
+				<key>描述</key>
+				<string>yes,no</string>
+				<key>option</key>
+				<true/>
+				<key>依赖参数</key>
+				<array>
+					<string>fid</string>
+				</array>
+			</dict>
+		</dict>
+	</dict>
+</dict>
+</plist>

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2803D4AB1F21F29800AF2897 /* Demo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2803D4AA1F21F29800AF2897 /* Demo.plist */; };
+		2803D4AD1F21F5D000AF2897 /* Mapping.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2803D4AC1F21F5D000AF2897 /* Mapping.plist */; };
 		286E24CC1F1CB45C005C990C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 286E24CB1F1CB45C005C990C /* main.m */; };
 		286E24CF1F1CB45C005C990C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 286E24CE1F1CB45C005C990C /* AppDelegate.m */; };
 		286E24D21F1CB45C005C990C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 286E24D11F1CB45C005C990C /* ViewController.m */; };
@@ -15,6 +17,7 @@
 		286E24DA1F1CB45C005C990C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 286E24D81F1CB45C005C990C /* LaunchScreen.storyboard */; };
 		286E24E51F1CB45C005C990C /* BeareadRouterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 286E24E41F1CB45C005C990C /* BeareadRouterTests.m */; };
 		286E24F01F1CB45C005C990C /* BeareadRouterUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 286E24EF1F1CB45C005C990C /* BeareadRouterUITests.m */; };
+		289A2CDC1F20898500A4B899 /* URLRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = 289A2CDA1F20898500A4B899 /* URLRoute.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2803D4AA1F21F29800AF2897 /* Demo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Demo.plist; sourceTree = "<group>"; };
+		2803D4AC1F21F5D000AF2897 /* Mapping.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Mapping.plist; sourceTree = "<group>"; };
 		286E24C71F1CB45C005C990C /* BeareadRouter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeareadRouter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		286E24CB1F1CB45C005C990C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		286E24CD1F1CB45C005C990C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -51,6 +56,8 @@
 		286E24EB1F1CB45C005C990C /* BeareadRouterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BeareadRouterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		286E24EF1F1CB45C005C990C /* BeareadRouterUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BeareadRouterUITests.m; sourceTree = "<group>"; };
 		286E24F11F1CB45C005C990C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		289A2CD91F20898500A4B899 /* URLRoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLRoute.h; sourceTree = "<group>"; };
+		289A2CDA1F20898500A4B899 /* URLRoute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLRoute.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +112,10 @@
 				286E24CE1F1CB45C005C990C /* AppDelegate.m */,
 				286E24D01F1CB45C005C990C /* ViewController.h */,
 				286E24D11F1CB45C005C990C /* ViewController.m */,
+				289A2CD91F20898500A4B899 /* URLRoute.h */,
+				289A2CDA1F20898500A4B899 /* URLRoute.m */,
+				2803D4AA1F21F29800AF2897 /* Demo.plist */,
+				2803D4AC1F21F5D000AF2897 /* Mapping.plist */,
 				286E24D31F1CB45C005C990C /* Main.storyboard */,
 				286E24D61F1CB45C005C990C /* Assets.xcassets */,
 				286E24D81F1CB45C005C990C /* LaunchScreen.storyboard */,
@@ -247,8 +258,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				286E24DA1F1CB45C005C990C /* LaunchScreen.storyboard in Resources */,
+				2803D4AB1F21F29800AF2897 /* Demo.plist in Resources */,
 				286E24D71F1CB45C005C990C /* Assets.xcassets in Resources */,
 				286E24D51F1CB45C005C990C /* Main.storyboard in Resources */,
+				2803D4AD1F21F5D000AF2897 /* Mapping.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,6 +289,7 @@
 				286E24D21F1CB45C005C990C /* ViewController.m in Sources */,
 				286E24CF1F1CB45C005C990C /* AppDelegate.m in Sources */,
 				286E24CC1F1CB45C005C990C /* main.m in Sources */,
+				289A2CDC1F20898500A4B899 /* URLRoute.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -509,6 +523,7 @@
 				286E24F61F1CB45C005C990C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		286E24F71F1CB45C005C990C /* Build configuration list for PBXNativeTarget "BeareadRouterTests" */ = {
 			isa = XCConfigurationList;
@@ -517,6 +532,7 @@
 				286E24F91F1CB45C005C990C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		286E24FA1F1CB45C005C990C /* Build configuration list for PBXNativeTarget "BeareadRouterUITests" */ = {
 			isa = XCConfigurationList;
@@ -525,6 +541,7 @@
 				286E24FC1F1CB45C005C990C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
