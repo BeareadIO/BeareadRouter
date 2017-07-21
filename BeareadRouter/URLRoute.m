@@ -195,15 +195,7 @@ RouteErrorDomain const RouteParseErrorDomain = @"com.urlroute.bearead";
     for (NSString *param in [self.routeUrl.query componentsSeparatedByString:@"&"]) {
         NSArray *elts = [param componentsSeparatedByString:@"="];
         if([elts count] < 2) continue;
-        NSUInteger index = [mapDic.allValues indexOfObject:[elts firstObject]];
-        if (index != NSNotFound) {
-            [queryDic setObject:[elts lastObject] forKey:[mapDic.allKeys objectAtIndex:index]];
-        } else {
-            canConfig = NO;
-            NSString *des =  [NSString stringWithFormat:@"Can't Find Argument(%@) In Mapping(映射)",[elts firstObject]];
-            NSError *mapError = [NSError errorWithDomain:RouteParseErrorDomain code:RouteErrorArgumentNotFoundInMapping userInfo:@{NSLocalizedDescriptionKey:des}];
-            self.routeError = mapError;
-        }
+        [queryDic setObject:[elts lastObject] forKey:[elts firstObject]];
     }
     if (!canConfig) {
         return canConfig;
@@ -211,20 +203,30 @@ RouteErrorDomain const RouteParseErrorDomain = @"com.urlroute.bearead";
     NSMutableDictionary *arguments = [NSMutableDictionary dictionary];
     for (NSDictionary *arg in [[self.routeDic objectForKey:@"参数"] allValues]) {
         if (![arg[@"option"] boolValue]) {
-            if (queryDic[arg[@"name"]]) {
+            NSString *argString;
+            if ([mapDic.allKeys containsObject:arg[@"name"]]) {
+                argString = [mapDic.allValues objectAtIndex:[mapDic.allKeys indexOfObject:arg[@"name"]]];
+            } else {
+                canConfig = NO;
+                NSString *des =  [NSString stringWithFormat:@"Can't Find Argument(%@) In Mapping(映射)",arg[@"name"]];
+                NSError *mapError = [NSError errorWithDomain:RouteParseErrorDomain code:RouteErrorArgumentNotFoundInMapping userInfo:@{NSLocalizedDescriptionKey:des}];
+                self.routeError = mapError;
+                break;
+            }
+            if (queryDic[argString]) {
                 for (NSString *dArg in arg[@"依赖参数"]) {
                     if ([queryDic.allKeys containsObject:dArg]) {
                         continue;
                     } else {
                         canConfig = NO;
-                        NSString *des = [NSString stringWithFormat:@"Argument (%@) Can't Find Dependent Argument (%@)",arg[@"name"],dArg];
+                        NSString *des = [NSString stringWithFormat:@"Argument (%@) Can't Find Dependent Argument (%@)",argString,dArg];
                         NSError *argError = [NSError errorWithDomain:RouteParseErrorDomain code:RouteErrorArgumentDependentNotFound userInfo:@{NSLocalizedDescriptionKey:des}];
                         self.routeError = argError;
                         break;
                     }
                 }
                 if (canConfig) {
-                    [arguments setObject:queryDic[arg[@"name"]] forKey:arg[@"name"]];
+                    [arguments setObject:queryDic[argString] forKey:arg[@"name"]];
                 } else {
                     break;
                 }
@@ -236,20 +238,30 @@ RouteErrorDomain const RouteParseErrorDomain = @"com.urlroute.bearead";
                 break;
             }
         } else {
-            if (queryDic[arg[@"name"]]) {
+            NSString *argString;
+            if ([mapDic.allKeys containsObject:arg[@"name"]]) {
+                argString = [mapDic.allValues objectAtIndex:[mapDic.allKeys indexOfObject:arg[@"name"]]];
+            } else {
+                canConfig = NO;
+                NSString *des =  [NSString stringWithFormat:@"Can't Find Argument(%@) In Mapping(映射)",arg[@"name"]];
+                NSError *mapError = [NSError errorWithDomain:RouteParseErrorDomain code:RouteErrorArgumentNotFoundInMapping userInfo:@{NSLocalizedDescriptionKey:des}];
+                self.routeError = mapError;
+                break;
+            }
+            if (queryDic[argString]) {
                 for (NSString *dArg in arg[@"依赖参数"]) {
                     if ([queryDic.allKeys containsObject:dArg]) {
                         continue;
                     } else {
                         canConfig = NO;
-                        NSString *des = [NSString stringWithFormat:@"Argument (%@) Can't Find Dependent Argument (%@)",arg[@"name"],dArg];
+                        NSString *des = [NSString stringWithFormat:@"Argument (%@) Can't Find Dependent Argument (%@)",argString,dArg];
                         NSError *argError = [NSError errorWithDomain:RouteParseErrorDomain code:RouteErrorArgumentDependentNotFound userInfo:@{NSLocalizedDescriptionKey:des}];
                         self.routeError = argError;
                         break;
                     }
                 }
                 if (canConfig) {
-                    [arguments setObject:queryDic[arg[@"name"]] forKey:arg[@"name"]];
+                    [arguments setObject:queryDic[argString] forKey:arg[@"name"]];
                 } else {
                     break;
                 }
