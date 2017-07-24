@@ -15,8 +15,8 @@
 		</dict>
 		<key>例子</key>
 		<dict>
-			<key>打开书籍详情并且loading</key>
-			<string>bearead://bookdetail</string>
+			<key>打开bid为123的书籍</key>
+			<string>bearead://bookdetail?bid=123</string>
 		</dict>
 		<key>域名</key>
 		<string>bookdetail</string>
@@ -27,7 +27,7 @@
 				<key>name</key>
 				<string>fid</string>
 				<key>option</key>
-				<false/>
+				<true/>
 			</dict>
 			<key>显示动画</key>
 			<dict>
@@ -40,6 +40,17 @@
 				<key>依赖参数</key>
 				<array>
 					<string>fid</string>
+				</array>
+			</dict>
+			<key>New item</key>
+			<dict>
+				<key>name</key>
+				<string>test</string>
+				<key>option</key>
+				<true/>
+				<key>依赖参数</key>
+				<array>
+					<string>show</string>
 				</array>
 			</dict>
 		</dict>

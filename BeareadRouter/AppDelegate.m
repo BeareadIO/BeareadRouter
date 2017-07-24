@@ -18,7 +18,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    URLRoute *route = [URLRoute routeWithURLString:@"bearead://bookdetail?test=123&bid=123"];
+    URLRoute *route = [URLRoute routeWithUrlString:@"bearead://www.bearead.com/bookdetail?test=123&show=1&bid=123"];
+    [route genRouteWithUrlString:@"bearead://bookdetail?bid=123"];
     if (route.routeError) {
         NSLog(@"%@",route.routeError);
     } else {

@@ -10,6 +10,8 @@
 
 RouteErrorDomain const RouteParseErrorDomain = @"com.urlroute.bearead";
 
+static URLRoute *_instance;
+
 @interface URLRoute ()
 
 @property (nonatomic, strong) NSURL       *routeUrl;
@@ -27,46 +29,44 @@ RouteErrorDomain const RouteParseErrorDomain = @"com.urlroute.bearead";
 
 @implementation URLRoute
 
-- (instancetype)initWithURLString:(NSString *)urlString {
-    return [self initWithURLString:urlString host:nil];
++ (instancetype)shareRoute {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _instance = [[URLRoute alloc] init];
+    });
+    return _instance;
 }
 
-+ (instancetype)routeWithURLString:(NSString *)urlString {
-    return [[URLRoute alloc] initWithURLString:urlString];
-}
-
-- (instancetype)initWithURLString:(NSString *)urlString host:(NSString *)host {
-    self = [super init];
-    if (self) {
-        BOOL canContinueConfig = [self configPlist];
-        
-        if (canContinueConfig) {
-            canContinueConfig = [self configURLWithUrlString:urlString];
-        }
-        
-        if (canContinueConfig) {
-            canContinueConfig = [self configTargetWithHostString:host];
-        }
-        
-        if (canContinueConfig) {
-            canContinueConfig = [self configRouteDic];
-        }
-        
-        if (canContinueConfig) {
-            canContinueConfig = [self configViewController];
-        }
-        if (canContinueConfig) {
-            [self configArguments];
-        }
+- (instancetype)genRouteWithUrlString:(NSString *)urlString {
+    BOOL canContinueConfig = [self configPlist];
+    
+    if (canContinueConfig) {
+        canContinueConfig = [self configURLWithUrlString:urlString];
+    }
+    
+    if (canContinueConfig) {
+        canContinueConfig = [self configTarget];
+    }
+    
+    if (canContinueConfig) {
+        canContinueConfig = [self configRouteDic];
+    }
+    
+    if (canContinueConfig) {
+        canContinueConfig = [self configViewController];
+    }
+    if (canContinueConfig) {
+        self.routeArguments = [NSMutableDictionary dictionary];
+        [self configArguments];
     }
     return self;
 }
 
-+ (instancetype)routeWithURLString:(NSString *)urlString host:(NSString *)host {
-    return [[URLRoute alloc] initWithURLString:urlString host:host];
++ (instancetype)routeWithUrlString:(NSString *)urlString {
+    return [[URLRoute shareRoute] genRouteWithUrlString:urlString];
 }
 
-- (instancetype)initWithTarget:(NSString *)target args:(NSDictionary *)args {
+- (instancetype)genRouteWithTarget:(NSString *)target args:(NSDictionary *)args {
     NSMutableString *string = [[NSMutableString alloc] initWithFormat:@"%@://",URLRouteScheme];
     [string appendString:target];
     if (args) {
@@ -76,16 +76,19 @@ RouteErrorDomain const RouteParseErrorDomain = @"com.urlroute.bearead";
         }
         [string deleteCharactersInRange:NSMakeRange(string.length - 1, 1)];
     }
-    return [self initWithURLString:string];
+    return [self genRouteWithUrlString:string];
 }
 
 + (instancetype)routeWithTarget:(NSString *)target args:(NSDictionary *)args {
-    return [[URLRoute alloc] initWithTarget:target args:args];
+    return [[URLRoute shareRoute] genRouteWithTarget:target args:args];
 }
 
 #pragma mark - Private
 
 - (BOOL)configPlist {
+    if (self.routeRule && self.routeMapping) {
+        return YES;
+    }
     BOOL canConfig = NO;
     NSString *rulePath = [[NSBundle mainBundle] pathForResource:URLRouteRulePlist ofType:@"plist"];
     NSString *mappingPath = [[NSBundle mainBundle] pathForResource:URLRouteMappingPlist ofType:@"plist"];
@@ -118,7 +121,7 @@ RouteErrorDomain const RouteParseErrorDomain = @"com.urlroute.bearead";
     NSURL *url = [NSURL URLWithString:urlString];
     if (url) {
         self.routeUrl = url;
-        BOOL knownScheme = [url.scheme isEqualToString:URLRouteScheme] || [url.scheme isEqualToString:@"http"];
+        BOOL knownScheme = [url.scheme isEqualToString:URLRouteScheme] || [url.scheme isEqualToString:@"https"];
         if (knownScheme){
             canConfig = YES;
         }
@@ -135,25 +138,26 @@ RouteErrorDomain const RouteParseErrorDomain = @"com.urlroute.bearead";
     return canConfig;
 }
 
-- (BOOL)configTargetWithHostString:(NSString * _Nullable)hostString {
+- (BOOL)configTarget {
     BOOL canConfig = NO;
-    if (hostString) {
-        if ([self.routeUrl.host isEqualToString:hostString]) {
+    if ([self.routeUrl.scheme isEqualToString:URLRouteScheme]) {
+        if ([self.routeUrl.host isEqualToString:URLRouteHost]) {
             canConfig = YES;
             self.routeTarget = self.routeUrl.lastPathComponent;
         } else {
-            NSString *des = [NSString stringWithFormat:@"Unknown Url Host:%@",self.routeUrl.host];
-            NSError *hostError = [NSError errorWithDomain:RouteParseErrorDomain code:RouteErrorURLUnknownHost userInfo:@{NSLocalizedDescriptionKey:des}];
-            self.routeError = hostError;
-        }
-    } else {
-        if ([self.routeUrl.scheme isEqualToString:URLRouteScheme]) {
             canConfig = YES;
             self.routeTarget = self.routeUrl.host;
-        } else {
-            NSString *des = [NSString stringWithFormat:@"Unknown Url Host:%@",self.routeUrl.host];
-            NSError *hostError = [NSError errorWithDomain:RouteParseErrorDomain code:RouteErrorURLUnknownHost userInfo:@{NSLocalizedDescriptionKey:des}];
-            self.routeError = hostError;
+        }
+    } else {
+        if ([self.routeUrl.scheme isEqualToString:@"https"]) {
+            if ([self.routeUrl.host isEqualToString:URLRouteHost]) {
+                canConfig = YES;
+                self.routeTarget = self.routeUrl.lastPathComponent;
+            } else {
+                NSString *des = [NSString stringWithFormat:@"Unknown Url Host:%@",self.routeUrl.host];
+                NSError *hostError = [NSError errorWithDomain:RouteParseErrorDomain code:RouteErrorURLUnknownHost userInfo:@{NSLocalizedDescriptionKey:des}];
+                self.routeError = hostError;
+            }
         }
     }
     return canConfig;
@@ -197,78 +201,57 @@ RouteErrorDomain const RouteParseErrorDomain = @"com.urlroute.bearead";
         if([elts count] < 2) continue;
         [queryDic setObject:[elts lastObject] forKey:[elts firstObject]];
     }
-    if (!canConfig) {
+    for (NSDictionary *arg in [[self.routeDic objectForKey:@"参数"] allValues]) {
+        canConfig = [self configSingleArgument:arg withMapping:mapDic withQuery:queryDic isOptional:[arg[@"option"] boolValue]];
+        if (canConfig) {
+            continue;
+        } else {
+            break;
+        }
+    }
+    return canConfig;
+}
+
+- (BOOL)configSingleArgument:(NSDictionary *)arg withMapping:(NSDictionary *)mapping withQuery:(NSDictionary *)query isOptional:(BOOL)optional {
+    NSMutableDictionary *arguments = self.routeArguments.mutableCopy;
+    BOOL canConfig = YES;
+    NSString *argString;
+    if ([mapping.allKeys containsObject:arg[@"name"]]) {
+        argString = [mapping.allValues objectAtIndex:[mapping.allKeys indexOfObject:arg[@"name"]]];
+    } else {
+        canConfig = NO;
+        NSString *des =  [NSString stringWithFormat:@"Can't Find Argument(%@) In Mapping(映射)",arg[@"name"]];
+        NSError *mapError = [NSError errorWithDomain:RouteParseErrorDomain code:RouteErrorArgumentNotFoundInMapping userInfo:@{NSLocalizedDescriptionKey:des}];
+        self.routeError = mapError;
         return canConfig;
     }
-    NSMutableDictionary *arguments = [NSMutableDictionary dictionary];
-    for (NSDictionary *arg in [[self.routeDic objectForKey:@"参数"] allValues]) {
-        if (![arg[@"option"] boolValue]) {
-            NSString *argString;
-            if ([mapDic.allKeys containsObject:arg[@"name"]]) {
-                argString = [mapDic.allValues objectAtIndex:[mapDic.allKeys indexOfObject:arg[@"name"]]];
+    if (query[argString]) {
+        for (NSString *dArg in arg[@"依赖参数"]) {
+            if ([query.allKeys containsObject:mapping[dArg]]) {
+                continue;
             } else {
                 canConfig = NO;
-                NSString *des =  [NSString stringWithFormat:@"Can't Find Argument(%@) In Mapping(映射)",arg[@"name"]];
-                NSError *mapError = [NSError errorWithDomain:RouteParseErrorDomain code:RouteErrorArgumentNotFoundInMapping userInfo:@{NSLocalizedDescriptionKey:des}];
-                self.routeError = mapError;
-                break;
-            }
-            if (queryDic[argString]) {
-                for (NSString *dArg in arg[@"依赖参数"]) {
-                    if ([queryDic.allKeys containsObject:dArg]) {
-                        continue;
-                    } else {
-                        canConfig = NO;
-                        NSString *des = [NSString stringWithFormat:@"Argument (%@) Can't Find Dependent Argument (%@)",argString,dArg];
-                        NSError *argError = [NSError errorWithDomain:RouteParseErrorDomain code:RouteErrorArgumentDependentNotFound userInfo:@{NSLocalizedDescriptionKey:des}];
-                        self.routeError = argError;
-                        break;
-                    }
-                }
-                if (canConfig) {
-                    [arguments setObject:queryDic[argString] forKey:arg[@"name"]];
-                } else {
-                    break;
-                }
-            } else {
-                canConfig = NO;
-                NSString *des = [NSString stringWithFormat:@"Argument (%@) Not Found",arg[@"name"]];
-                NSError *argError = [NSError errorWithDomain:RouteParseErrorDomain code:RouteErrorArgumentNotFound userInfo:@{NSLocalizedDescriptionKey:des}];
+                NSString *des = [NSString stringWithFormat:@"Argument (%@) Can't Find Dependent Argument (%@) eg:(%@=xxx)",argString,dArg,mapping[dArg]];
+                NSError *argError = [NSError errorWithDomain:RouteParseErrorDomain code:RouteErrorArgumentDependentNotFound userInfo:@{NSLocalizedDescriptionKey:des}];
                 self.routeError = argError;
                 break;
             }
+        }
+        if (canConfig) {
+            [arguments setObject:query[argString] forKey:arg[@"name"]];
+            self.routeArguments = arguments;
         } else {
-            NSString *argString;
-            if ([mapDic.allKeys containsObject:arg[@"name"]]) {
-                argString = [mapDic.allValues objectAtIndex:[mapDic.allKeys indexOfObject:arg[@"name"]]];
-            } else {
-                canConfig = NO;
-                NSString *des =  [NSString stringWithFormat:@"Can't Find Argument(%@) In Mapping(映射)",arg[@"name"]];
-                NSError *mapError = [NSError errorWithDomain:RouteParseErrorDomain code:RouteErrorArgumentNotFoundInMapping userInfo:@{NSLocalizedDescriptionKey:des}];
-                self.routeError = mapError;
-                break;
-            }
-            if (queryDic[argString]) {
-                for (NSString *dArg in arg[@"依赖参数"]) {
-                    if ([queryDic.allKeys containsObject:dArg]) {
-                        continue;
-                    } else {
-                        canConfig = NO;
-                        NSString *des = [NSString stringWithFormat:@"Argument (%@) Can't Find Dependent Argument (%@)",argString,dArg];
-                        NSError *argError = [NSError errorWithDomain:RouteParseErrorDomain code:RouteErrorArgumentDependentNotFound userInfo:@{NSLocalizedDescriptionKey:des}];
-                        self.routeError = argError;
-                        break;
-                    }
-                }
-                if (canConfig) {
-                    [arguments setObject:queryDic[argString] forKey:arg[@"name"]];
-                } else {
-                    break;
-                }
-            }
+            return canConfig;
+        }
+    } else {
+        if (!optional) {
+            canConfig = NO;
+            NSString *des = [NSString stringWithFormat:@"Argument (%@) Not Found",arg[@"name"]];
+            NSError *argError = [NSError errorWithDomain:RouteParseErrorDomain code:RouteErrorArgumentNotFound userInfo:@{NSLocalizedDescriptionKey:des}];
+            self.routeError = argError;
+            return canConfig;
         }
     }
-    self.routeArguments = arguments;
     return canConfig;
 }
 

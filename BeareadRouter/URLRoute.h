@@ -8,9 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-#define URLRouteScheme @"bearead"
-#define URLRouteRulePlist @"Demo"
-#define URLRouteMappingPlist @"Mapping"
+#define URLRouteScheme              @"bearead"
+#define URLRouteHost                @"www.bearead.com"
+#define URLRouteRulePlist           @"Demo"
+#define URLRouteMappingPlist        @"Mapping"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -40,13 +41,12 @@ NS_ENUM(NSInteger)
 @property (nonatomic, copy, readonly) NSString      *routeController;
 @property (nonatomic, copy, readonly) NSDictionary  *routeArguments;
 
-- (instancetype)initWithURLString:(NSString *)urlString;
-+ (instancetype)routeWithURLString:(NSString *)urlString;
++ (instancetype)shareRoute;
 
-- (instancetype)initWithURLString:(NSString *)urlString host:(NSString * _Nullable)host;
-+ (instancetype)routeWithURLString:(NSString *)urlString host:(NSString * _Nullable)host;
+- (instancetype)genRouteWithUrlString:(NSString *)urlString;
++ (instancetype)routeWithUrlString:(NSString *)urlString;
 
-- (instancetype)initWithTarget:(NSString *)target args:(NSDictionary *)args;
+- (instancetype)genRouteWithTarget:(NSString *)target args:(NSDictionary *)args;
 + (instancetype)routeWithTarget:(NSString *)target args:(NSDictionary *)args;
 
 @end
