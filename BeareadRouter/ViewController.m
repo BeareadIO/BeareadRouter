@@ -7,6 +7,8 @@
 //
 
 #import "ViewController.h"
+#import "URLRoute.h"
+
 @interface ViewController ()
 
 @end
@@ -16,7 +18,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    
+    URLRoute *route = [URLRoute routeWithUrlString:@"bearead://www.bearead.com/bookdetail"];
+    if (route.routeError) {
+        NSLog(@"%@",route.routeError);
+    } else {
+        NSLog(@"%@",route);
+    }
+
 }
 
 

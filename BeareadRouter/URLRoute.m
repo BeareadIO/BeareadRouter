@@ -195,6 +195,9 @@ static URLRoute *_instance;
 - (BOOL)configArguments {
     BOOL canConfig = YES;
     NSMutableDictionary *queryDic = [NSMutableDictionary dictionary];
+    if (!self.routeUrl.query) {
+        return canConfig;
+    }
     NSDictionary *mapDic = [self.routeDic objectForKey:@"映射"];
     for (NSString *param in [self.routeUrl.query componentsSeparatedByString:@"&"]) {
         NSArray *elts = [param componentsSeparatedByString:@"="];

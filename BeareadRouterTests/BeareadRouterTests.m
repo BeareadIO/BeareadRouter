@@ -7,6 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "URLRoute.h"
 
 @interface BeareadRouterTests : XCTestCase
 
@@ -24,15 +25,42 @@
     [super tearDown];
 }
 
-- (void)testExample {
-    // This is an example of a functional test case.
-    // Use XCTAssert and related functions to verify your tests produce the correct results.
+- (void)testRouteResult {
+    URLRoute *route = [URLRoute routeWithUrlString:@"bearead://bookdetail?bid=123"];
+    XCTAssertNil(route.routeError);
+    route = [URLRoute routeWithTarget:@"bookdetail" args:@{@"bid":@"123"}];
+    XCTAssertNil(route.routeError);
+    [route genRouteWithUrlString:@"bearead://bookdetail?bid=123"];
+    XCTAssertNil(route.routeError);
+    [route genRouteWithTarget:@"bookdetail" args:@{@"bid":@"123"}];
+    XCTAssertNil(route.routeError);
 }
 
-- (void)testPerformanceExample {
-    // This is an example of a performance test case.
+- (void)testUrlInit {
+    URLRoute *route = [URLRoute routeWithUrlString:@"bearead://bookdetail?bid=123"];
+    NSLog(@"\nTestURlInit%@",route);
+}
+
+- (void)testTargetInit {
+    URLRoute *route = [URLRoute routeWithTarget:@"bookdetail" args:@{@"bid":@"123"}];
+    NSLog(@"\nTestTargetInit%@",route);
+}
+
+- (void)testUrlGeneration {
+    URLRoute *route = [URLRoute shareRoute];
+    [route genRouteWithUrlString:@"bearead://bookdetail?bid=123"];
+    NSLog(@"\nTestUrlGeneration%@",route);
+}
+
+- (void)testTargetGeneration {
+    URLRoute *route = [URLRoute shareRoute];
+    [route genRouteWithTarget:@"bookdetail" args:@{@"bid":@"123"}];
+    NSLog(@"\nTestTargetGeneration%@",route);
+}
+
+- (void)testTimeCost {
     [self measureBlock:^{
-        // Put the code you want to measure the time of here.
+        [URLRoute routeWithUrlString:@"bearead://bookdetail?bid=123"];
     }];
 }
 
