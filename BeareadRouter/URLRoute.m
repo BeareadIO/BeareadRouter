@@ -24,7 +24,6 @@ static URLRoute *_instance;
 @property (nonatomic, copy) NSDictionary  *routeMapping;
 @property (nonatomic, copy) NSDictionary  *routeDic;
 
-
 @end
 
 @implementation URLRoute
@@ -38,28 +37,37 @@ static URLRoute *_instance;
 }
 
 - (instancetype)genRouteWithUrlString:(NSString *)urlString {
-    BOOL canContinueConfig = [self configPlist];
-    
-    if (canContinueConfig) {
-        canContinueConfig = [self configURLWithUrlString:urlString];
-    }
-    
-    if (canContinueConfig) {
-        canContinueConfig = [self configTarget];
-    }
-    
-    if (canContinueConfig) {
-        canContinueConfig = [self configRouteDic];
-    }
-    
-    if (canContinueConfig) {
-        canContinueConfig = [self configViewController];
-    }
-    if (canContinueConfig) {
-        self.routeArguments = [NSMutableDictionary dictionary];
-        [self configArguments];
-    }
+    [self resetRoute];
+    [[[[[[self config:^BOOL{
+        return [self configPlist];
+    }] config:^BOOL{
+        return [self configURLWithUrlString:urlString];
+    }] config:^BOOL{
+        return [self configTarget];
+    }] config:^BOOL{
+        return [self configRouteDic];
+    }] config:^BOOL{
+        return [self configViewController];
+    }] config:^BOOL{
+        return [self configArguments];
+    }];
     return self;
+}
+
+- (void)resetRoute {
+    self.routeArguments = @{}.mutableCopy;
+    self.routeError = nil;
+    self.routeController = nil;
+    self.routeUrl = nil;
+}
+
+- (URLRoute *)config:(BOOL (^)(void))doConfig {
+    BOOL result = doConfig();
+    if (result) {
+        return self;
+    } else {
+        return nil;
+    }
 }
 
 + (instancetype)routeWithUrlString:(NSString *)urlString {

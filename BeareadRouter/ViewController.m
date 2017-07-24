@@ -18,7 +18,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    URLRoute *route = [URLRoute routeWithUrlString:@"bearead://www.bearead.com/bookdetail"];
+    URLRoute *route = [URLRoute routeWithUrlString:@"bearead://www.bearead.com/bookdetai?fid=123"];
+    [route genRouteWithUrlString:@"bearead://bookdetail?bid=234"];
+    [route genRouteWithTarget:@"bookdetail" args:@{@"bid":@"456",@"test":@"444",@"show":@"1"}];
     if (route.routeError) {
         NSLog(@"%@",route.routeError);
     } else {
