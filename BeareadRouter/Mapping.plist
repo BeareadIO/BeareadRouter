@@ -3,6 +3,13 @@
 <plist version="1.0">
 <dict>
 	<key>bookdetail</key>
-	<string>BookViewController</string>
+	<dict>
+		<key>StoryboardName</key>
+		<string>xxx</string>
+		<key>ViewController</key>
+		<string>DetailViewController</string>
+		<key>subscribeItem</key>
+		<string>SubscribeItem</string>
+	</dict>
 </dict>
 </plist>

@@ -10,7 +10,7 @@
 
 #define URLRouteScheme              @"bearead"
 #define URLRouteHost                @"www.bearead.com"
-#define URLRouteRulePlist           @"Demo"
+#define URLRouteRulePlist           @"Route"
 #define URLRouteMappingPlist        @"Mapping"
 
 NS_ASSUME_NONNULL_BEGIN
@@ -30,8 +30,9 @@ NS_ENUM(NSInteger)
     RouteErrorPlistRuleNotContainTarget     = -7,
     RouteErrorPlistMappingNotContainTarget  = -8,
     RouteErrorArgumentNotFound              = -9,
-    RouteErrorArgumentNotFoundInMapping     = -10,
+    RouteErrorArgumentNotFoundInRule        = -10,
     RouteErrorArgumentDependentNotFound     = -11,
+    RouteErrorArgumentCantConvertModel      = -12,
 };
 
 @interface URLRoute : NSObject
@@ -39,6 +40,7 @@ NS_ENUM(NSInteger)
 @property (nonatomic, strong, readonly) NSURL       *routeUrl;
 @property (nonatomic, strong, readonly) NSError     *routeError;
 @property (nonatomic, copy, readonly) NSString      *routeController;
+@property (nonatomic, copy, readonly) NSString      *routeStoryboard;
 @property (nonatomic, copy, readonly) NSDictionary  *routeArguments;
 
 + (instancetype)shareRoute;
@@ -50,7 +52,9 @@ NS_ENUM(NSInteger)
 + (instancetype)routeWithTarget:(NSString *)target args:(NSDictionary *)args;
 
 @end
+
     
 NS_ASSUME_NONNULL_END
+
     
     

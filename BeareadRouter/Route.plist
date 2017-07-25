@@ -6,22 +6,45 @@
 	<dict>
 		<key>映射</key>
 		<dict>
+			<key>subscribeItem</key>
+			<dict>
+				<key>name</key>
+				<string>name</string>
+				<key>type</key>
+				<string>types</string>
+			</dict>
 			<key>fid</key>
 			<string>bid</string>
-			<key>test</key>
-			<string>test</string>
 			<key>show</key>
 			<string>show</string>
 		</dict>
 		<key>例子</key>
 		<dict>
 			<key>打开bid为123的书籍</key>
-			<string>bearead://bookdetail?bid=123</string>
+			<string>bearead://bookdetail?bid=123&amp;name=33</string>
 		</dict>
 		<key>域名</key>
 		<string>bookdetail</string>
 		<key>参数</key>
 		<dict>
+			<key>类型</key>
+			<dict>
+				<key>name</key>
+				<string>type</string>
+				<key>描述</key>
+				<string>1,2,3</string>
+				<key>option</key>
+				<false/>
+			</dict>
+			<key>书名</key>
+			<dict>
+				<key>name</key>
+				<string>name</string>
+				<key>描述</key>
+				<string>标签名称</string>
+				<key>option</key>
+				<false/>
+			</dict>
 			<key>书籍ID</key>
 			<dict>
 				<key>name</key>
@@ -42,16 +65,12 @@
 					<string>fid</string>
 				</array>
 			</dict>
-			<key>New item</key>
+			<key>栏目</key>
 			<dict>
 				<key>name</key>
-				<string>test</string>
+				<string>subscribeItem</string>
 				<key>option</key>
 				<true/>
-				<key>依赖参数</key>
-				<array>
-					<string>show</string>
-				</array>
 			</dict>
 		</dict>
 	</dict>

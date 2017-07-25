@@ -7,16 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2803D4AB1F21F29800AF2897 /* Demo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2803D4AA1F21F29800AF2897 /* Demo.plist */; };
-		2803D4AD1F21F5D000AF2897 /* Mapping.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2803D4AC1F21F5D000AF2897 /* Mapping.plist */; };
+		2856B0F91F26DA0400A0FD55 /* Mapping.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2856B0F71F26DA0400A0FD55 /* Mapping.plist */; };
+		2856B0FA1F26DA0400A0FD55 /* Route.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2856B0F81F26DA0400A0FD55 /* Route.plist */; };
+		2856B0FD1F271CF100A0FD55 /* SubscribeItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 2856B0FC1F271CF100A0FD55 /* SubscribeItem.m */; };
 		286E24CC1F1CB45C005C990C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 286E24CB1F1CB45C005C990C /* main.m */; };
 		286E24CF1F1CB45C005C990C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 286E24CE1F1CB45C005C990C /* AppDelegate.m */; };
 		286E24D21F1CB45C005C990C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 286E24D11F1CB45C005C990C /* ViewController.m */; };
 		286E24D51F1CB45C005C990C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 286E24D31F1CB45C005C990C /* Main.storyboard */; };
 		286E24D71F1CB45C005C990C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 286E24D61F1CB45C005C990C /* Assets.xcassets */; };
 		286E24DA1F1CB45C005C990C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 286E24D81F1CB45C005C990C /* LaunchScreen.storyboard */; };
-		286E24E51F1CB45C005C990C /* BeareadRouterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 286E24E41F1CB45C005C990C /* BeareadRouterTests.m */; };
 		289A2CDC1F20898500A4B899 /* URLRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = 289A2CDA1F20898500A4B899 /* URLRoute.m */; };
+		DAA90218CD8BA1234269954A /* Pods_BeareadRouter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9610E3772713AD0BED3CC118 /* Pods_BeareadRouter.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,8 +31,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2803D4AA1F21F29800AF2897 /* Demo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Demo.plist; sourceTree = "<group>"; };
-		2803D4AC1F21F5D000AF2897 /* Mapping.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Mapping.plist; sourceTree = "<group>"; };
+		2856B0F71F26DA0400A0FD55 /* Mapping.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Mapping.plist; sourceTree = "<group>"; };
+		2856B0F81F26DA0400A0FD55 /* Route.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Route.plist; sourceTree = "<group>"; };
+		2856B0FB1F271CF100A0FD55 /* SubscribeItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubscribeItem.h; sourceTree = "<group>"; };
+		2856B0FC1F271CF100A0FD55 /* SubscribeItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubscribeItem.m; sourceTree = "<group>"; };
 		286E24C71F1CB45C005C990C /* BeareadRouter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeareadRouter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		286E24CB1F1CB45C005C990C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		286E24CD1F1CB45C005C990C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -43,10 +46,12 @@
 		286E24D91F1CB45C005C990C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		286E24DB1F1CB45C005C990C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		286E24E01F1CB45C005C990C /* BeareadRouterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BeareadRouterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		286E24E41F1CB45C005C990C /* BeareadRouterTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BeareadRouterTests.m; sourceTree = "<group>"; };
 		286E24E61F1CB45C005C990C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		289A2CD91F20898500A4B899 /* URLRoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLRoute.h; sourceTree = "<group>"; };
 		289A2CDA1F20898500A4B899 /* URLRoute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLRoute.m; sourceTree = "<group>"; };
+		9610E3772713AD0BED3CC118 /* Pods_BeareadRouter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeareadRouter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E116465AB19A8EFCECB5B6D2 /* Pods-BeareadRouter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeareadRouter.release.xcconfig"; path = "Pods/Target Support Files/Pods-BeareadRouter/Pods-BeareadRouter.release.xcconfig"; sourceTree = "<group>"; };
+		EBCC71541644F125347E407E /* Pods-BeareadRouter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeareadRouter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BeareadRouter/Pods-BeareadRouter.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAA90218CD8BA1234269954A /* Pods_BeareadRouter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,12 +73,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D00A41DE39DDAA81EB7EE3C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EBCC71541644F125347E407E /* Pods-BeareadRouter.debug.xcconfig */,
+				E116465AB19A8EFCECB5B6D2 /* Pods-BeareadRouter.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		286E24BE1F1CB45C005C990C = {
 			isa = PBXGroup;
 			children = (
 				286E24C91F1CB45C005C990C /* BeareadRouter */,
 				286E24E31F1CB45C005C990C /* BeareadRouterTests */,
 				286E24C81F1CB45C005C990C /* Products */,
+				0D00A41DE39DDAA81EB7EE3C /* Pods */,
+				4280CD213DE89FE27EA12F92 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -94,8 +111,10 @@
 				286E24D11F1CB45C005C990C /* ViewController.m */,
 				289A2CD91F20898500A4B899 /* URLRoute.h */,
 				289A2CDA1F20898500A4B899 /* URLRoute.m */,
-				2803D4AA1F21F29800AF2897 /* Demo.plist */,
-				2803D4AC1F21F5D000AF2897 /* Mapping.plist */,
+				2856B0FB1F271CF100A0FD55 /* SubscribeItem.h */,
+				2856B0FC1F271CF100A0FD55 /* SubscribeItem.m */,
+				2856B0F71F26DA0400A0FD55 /* Mapping.plist */,
+				2856B0F81F26DA0400A0FD55 /* Route.plist */,
 				286E24D31F1CB45C005C990C /* Main.storyboard */,
 				286E24D61F1CB45C005C990C /* Assets.xcassets */,
 				286E24D81F1CB45C005C990C /* LaunchScreen.storyboard */,
@@ -116,10 +135,17 @@
 		286E24E31F1CB45C005C990C /* BeareadRouterTests */ = {
 			isa = PBXGroup;
 			children = (
-				286E24E41F1CB45C005C990C /* BeareadRouterTests.m */,
 				286E24E61F1CB45C005C990C /* Info.plist */,
 			);
 			path = BeareadRouterTests;
+			sourceTree = "<group>";
+		};
+		4280CD213DE89FE27EA12F92 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9610E3772713AD0BED3CC118 /* Pods_BeareadRouter.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -129,9 +155,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 286E24F41F1CB45C005C990C /* Build configuration list for PBXNativeTarget "BeareadRouter" */;
 			buildPhases = (
+				CD6C96D633CCDFCF44CA0065 /* [CP] Check Pods Manifest.lock */,
 				286E24C31F1CB45C005C990C /* Sources */,
 				286E24C41F1CB45C005C990C /* Frameworks */,
 				286E24C51F1CB45C005C990C /* Resources */,
+				A0E31AAEB8640532FD1A9C83 /* [CP] Embed Pods Frameworks */,
+				97F2CAE5225B0F3A288E63AD /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -205,10 +234,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				286E24DA1F1CB45C005C990C /* LaunchScreen.storyboard in Resources */,
-				2803D4AB1F21F29800AF2897 /* Demo.plist in Resources */,
 				286E24D71F1CB45C005C990C /* Assets.xcassets in Resources */,
 				286E24D51F1CB45C005C990C /* Main.storyboard in Resources */,
-				2803D4AD1F21F5D000AF2897 /* Mapping.plist in Resources */,
+				2856B0FA1F26DA0400A0FD55 /* Route.plist in Resources */,
+				2856B0F91F26DA0400A0FD55 /* Mapping.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,12 +250,61 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		97F2CAE5225B0F3A288E63AD /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BeareadRouter/Pods-BeareadRouter-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A0E31AAEB8640532FD1A9C83 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BeareadRouter/Pods-BeareadRouter-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CD6C96D633CCDFCF44CA0065 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		286E24C31F1CB45C005C990C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				286E24D21F1CB45C005C990C /* ViewController.m in Sources */,
+				2856B0FD1F271CF100A0FD55 /* SubscribeItem.m in Sources */,
 				286E24CF1F1CB45C005C990C /* AppDelegate.m in Sources */,
 				286E24CC1F1CB45C005C990C /* main.m in Sources */,
 				289A2CDC1F20898500A4B899 /* URLRoute.m in Sources */,
@@ -237,7 +315,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				286E24E51F1CB45C005C990C /* BeareadRouterTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -365,6 +442,7 @@
 		};
 		286E24F51F1CB45C005C990C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EBCC71541644F125347E407E /* Pods-BeareadRouter.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = BeareadRouter/Info.plist;
@@ -376,6 +454,7 @@
 		};
 		286E24F61F1CB45C005C990C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E116465AB19A8EFCECB5B6D2 /* Pods-BeareadRouter.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = BeareadRouter/Info.plist;

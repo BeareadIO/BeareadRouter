@@ -1,0 +1,6 @@
+framework module Pods_BeareadRouter {
+  umbrella header "Pods-BeareadRouter-umbrella.h"
+
+  export *
+  module * { export * }
+}
