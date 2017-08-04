@@ -355,7 +355,7 @@ static URLRoute *_instance;
 
 
 - (NSString *)description {
-    NSMutableString *des = [NSMutableString stringWithString:@"\n------Bearead Url Route------\n"];
+    NSMutableString *des = [NSMutableString stringWithString:@"\n------Url Route------\n"];
     if (self.routeStoryboard) {
         [des appendFormat:@"Storyboard:%@\n",self.routeStoryboard];
     }
@@ -363,7 +363,7 @@ static URLRoute *_instance;
     if (self.routeArguments) {
         [des appendFormat:@"Arguments:%@\n",self.routeArguments];
     }
-    [des appendString:@"-----------------------------"];
+    [des appendString:@"---------------------"];
     return des;
 }
 

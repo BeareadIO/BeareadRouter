@@ -21,18 +21,18 @@ extern RouteErrorDomain const RouteParseErrorDomain;
 
 NS_ENUM(NSInteger)
 {
-    RouteErrorURLCantParse                  = -1,
-    RouteErrorURLUnknownScheme              = -2,
-    RouteErrorURLUnknownHost                = -3,
-    RouteErrorPlistRuleNotFound             = -4,
-    RouteErrorPlistMappingNotFound          = -5,
-    RouteErrorPlistCantConvertDictionary    = -6,
-    RouteErrorPlistRuleNotContainTarget     = -7,
-    RouteErrorPlistMappingNotContainTarget  = -8,
-    RouteErrorArgumentNotFound              = -9,
-    RouteErrorArgumentNotFoundInRule        = -10,
-    RouteErrorArgumentDependentNotFound     = -11,
-    RouteErrorArgumentCantConvertModel      = -12,
+    RouteErrorURLCantParse                  = -1, // url地址无法解析
+    RouteErrorURLUnknownScheme              = -2, // 未知的scheme
+    RouteErrorURLUnknownHost                = -3, // 未知的host
+    RouteErrorPlistRuleNotFound             = -4, // 无法找到跳转规则的plist文件
+    RouteErrorPlistMappingNotFound          = -5, // 无法找到页面规则的plist文件
+    RouteErrorPlistCantConvertDictionary    = -6, // plist文件无法转化为字典
+    RouteErrorPlistRuleNotContainTarget     = -7, // 跳转规则中不包含跳转目标
+    RouteErrorPlistMappingNotContainTarget  = -8, // 页面规则中不包含跳转目标
+    RouteErrorArgumentNotFound              = -9, // url中无法找到对应参数
+    RouteErrorArgumentNotFoundInRule        = -10,// 跳转规则映射中无法找到对应参数
+    RouteErrorArgumentDependentNotFound     = -11,// url中无法找到参数的依赖参数
+    RouteErrorArgumentCantConvertModel      = -12,// url中参数无法组成跳转所需对象
 };
 
 @interface URLRoute : NSObject
