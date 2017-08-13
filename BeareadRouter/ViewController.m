@@ -8,8 +8,13 @@
 
 #import "ViewController.h"
 #import "URLRoute.h"
+#import "URLMaker.h"
 
-@interface ViewController ()
+@interface ViewController () <UITextViewDelegate>
+
+@property (nonatomic, weak) IBOutlet UITextView *textUrl;
+@property (nonatomic, weak) IBOutlet UITextView *textInfo;
+@property (nonatomic, strong) URLRoute *route;
 
 @end
 
@@ -18,15 +23,34 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-        
-    URLRoute *route = [URLRoute routeWithUrlString:@"bearead://www.bearead.com/bookdetail?bid=123&fid=234&name=test&types=role"];
     
-    if (route.routeError) {
-        NSLog(@"%@",route.routeError);
+    NSString *book = [NSString makeUrl:^(URLMaker *maker) {
+        maker.scheme(@"bearead").host(@"www.bearead.com").path(@"bookdetail");
+        maker.query(@"bid"  ,@"123");
+        maker.query(@"fid"  ,@"234");
+        maker.query(@"name" ,@"text");
+        maker.query(@"types",@"role");
+    }];
+    self.textUrl.text = book;
+    self.route = [URLRoute routeWithUrlString:book];
+    
+    if (self.route.routeError) {
+        self.textInfo.text = self.route.routeError.description;
     } else {
-        NSLog(@"%@",route);
+        self.textInfo.text = self.route.description;
     }
 }
 
+- (void)textViewDidChange:(UITextView *)textView {
+    [self changeInfoWithText:textView.text];
+}
 
+- (void)changeInfoWithText:(NSString *)text {
+    self.route = [URLRoute routeWithUrlString:text];
+    if (self.route.routeError) {
+        self.textInfo.text = self.route.routeError.description;
+    } else {
+        self.textInfo.text = self.route.description;
+    }
+}
 @end

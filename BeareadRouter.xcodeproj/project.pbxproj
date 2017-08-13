@@ -17,6 +17,7 @@
 		286E24D71F1CB45C005C990C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 286E24D61F1CB45C005C990C /* Assets.xcassets */; };
 		286E24DA1F1CB45C005C990C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 286E24D81F1CB45C005C990C /* LaunchScreen.storyboard */; };
 		289A2CDC1F20898500A4B899 /* URLRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = 289A2CDA1F20898500A4B899 /* URLRoute.m */; };
+		28D073EB1F3DAF6700ED8078 /* URLMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D073EA1F3DAF6700ED8078 /* URLMaker.m */; };
 		DAA90218CD8BA1234269954A /* Pods_BeareadRouter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9610E3772713AD0BED3CC118 /* Pods_BeareadRouter.framework */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +50,8 @@
 		286E24E61F1CB45C005C990C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		289A2CD91F20898500A4B899 /* URLRoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLRoute.h; sourceTree = "<group>"; };
 		289A2CDA1F20898500A4B899 /* URLRoute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLRoute.m; sourceTree = "<group>"; };
+		28D073E91F3DAF6700ED8078 /* URLMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLMaker.h; sourceTree = "<group>"; };
+		28D073EA1F3DAF6700ED8078 /* URLMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLMaker.m; sourceTree = "<group>"; };
 		9610E3772713AD0BED3CC118 /* Pods_BeareadRouter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeareadRouter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E116465AB19A8EFCECB5B6D2 /* Pods-BeareadRouter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeareadRouter.release.xcconfig"; path = "Pods/Target Support Files/Pods-BeareadRouter/Pods-BeareadRouter.release.xcconfig"; sourceTree = "<group>"; };
 		EBCC71541644F125347E407E /* Pods-BeareadRouter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeareadRouter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BeareadRouter/Pods-BeareadRouter.debug.xcconfig"; sourceTree = "<group>"; };
@@ -111,6 +114,8 @@
 				286E24D11F1CB45C005C990C /* ViewController.m */,
 				289A2CD91F20898500A4B899 /* URLRoute.h */,
 				289A2CDA1F20898500A4B899 /* URLRoute.m */,
+				28D073E91F3DAF6700ED8078 /* URLMaker.h */,
+				28D073EA1F3DAF6700ED8078 /* URLMaker.m */,
 				2856B0FB1F271CF100A0FD55 /* SubscribeItem.h */,
 				2856B0FC1F271CF100A0FD55 /* SubscribeItem.m */,
 				2856B0F71F26DA0400A0FD55 /* Mapping.plist */,
@@ -305,6 +310,7 @@
 			files = (
 				286E24D21F1CB45C005C990C /* ViewController.m in Sources */,
 				2856B0FD1F271CF100A0FD55 /* SubscribeItem.m in Sources */,
+				28D073EB1F3DAF6700ED8078 /* URLMaker.m in Sources */,
 				286E24CF1F1CB45C005C990C /* AppDelegate.m in Sources */,
 				286E24CC1F1CB45C005C990C /* main.m in Sources */,
 				289A2CDC1F20898500A4B899 /* URLRoute.m in Sources */,
