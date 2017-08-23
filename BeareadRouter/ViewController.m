@@ -15,7 +15,6 @@
 @property (nonatomic, weak) IBOutlet UITextView *textUrl;
 @property (nonatomic, weak) IBOutlet UITextView *textInfo;
 @property (nonatomic, strong) URLRoute *route;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *urlHeightConstraint;
 
 @end
 
@@ -43,7 +42,6 @@
 }
 
 - (void)textViewDidChange:(UITextView *)textView {
-    self.urlHeightConstraint.constant = textView.contentSize.height;
     [self changeInfoWithText:textView.text];
 }
 
