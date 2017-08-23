@@ -74,6 +74,7 @@
                     <connections>
                         <outlet property="textInfo" destination="t25-lt-n3j" id="fJs-2L-0mv"/>
                         <outlet property="textUrl" destination="und-ig-nzY" id="dhH-yS-epV"/>
+                        <outlet property="urlHeightConstraint" destination="Htt-mK-JXv" id="nOu-1t-TKS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
