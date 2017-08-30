@@ -5,9 +5,9 @@
 	<key>bookdetail</key>
 	<dict>
 		<key>StoryboardName</key>
-		<string>xxx</string>
+		<string>Main</string>
 		<key>ViewController</key>
-		<string>DetailViewController</string>
+		<string>BookViewController</string>
 		<key>subscribeItem</key>
 		<string>SubscribeItem</string>
 	</dict>

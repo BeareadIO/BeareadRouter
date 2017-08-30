@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "URLRoute.h"
 #import "URLMaker.h"
+#import "URLRoute+Transfer.h"
 
 @interface ViewController () <UITextViewDelegate>
 
@@ -40,6 +41,17 @@
     } else {
         self.textInfo.text = self.route.description;
     }
+}
+
+- (IBAction)clickAction:(id)sender {
+    [self.route mountResult:^(UIViewController *vc, NSError *error) {
+        if (error) {
+            NSLog(@"\n%@",error.description);
+        }
+        if (vc) {
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+    }];
 }
 
 - (void)textViewDidChange:(UITextView *)textView {
