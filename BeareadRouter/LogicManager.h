@@ -21,6 +21,8 @@ typedef NS_ENUM(NSUInteger, LogicActionStatus) {
 
 + (LogicManager *)sharedManager;
 
+- (void)startCheck;
+
 - (void)registerAction:(LogicAction)action name:(NSString *)name;
 
 @end

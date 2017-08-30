@@ -28,7 +28,7 @@ static LogicManager *manager = nil;
 }
 
 - (void)registerAction:(LogicAction)action name:(NSString *)name {
-
+    
 }
 
 - (NSDictionary *)map {
